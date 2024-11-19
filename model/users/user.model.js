@@ -39,7 +39,7 @@ const user = new mongoose.Schema({
     },
     agree: {
         type: Boolean,
-        require:true
+        require: true
     },
     createdAt: {
         type: Date,
@@ -47,4 +47,5 @@ const user = new mongoose.Schema({
     }
 })
 
-export const User = mongoose.model("User", user);
+ export const User = mongoose.model("User", user);
+// export default User;

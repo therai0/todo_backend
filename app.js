@@ -29,6 +29,9 @@ import loginUser from "./routes/users/users.routes.js";
 
 // importing route for todo
 import createTodo from "./routes/todos/todos.routes.js"
+import deleteTodo from "./routes/todos/todos.routes.js"
+import updateTodo from "./routes/todos/todos.routes.js"
+import getTodos from "./routes/todos/todos.routes.js"
 
 
 
@@ -44,6 +47,9 @@ app.use("/api/auth", loginUser);
 
 
 // for creating todo 
-app.use("/api/todo",createTodo);
+app.use("/api/todo", createTodo);
+app.use("/api/todo", deleteTodo);
+app.use("/api/todo", updateTodo);
+app.use("/api/todo", getTodos);
 
 export default app;

@@ -24,7 +24,6 @@ const todo = new mongoose.Schema({
         type: String,
         require: true,
         trim: true,
-        unique: true
     },
     edit: {
         type: Boolean,
@@ -35,13 +34,15 @@ const todo = new mongoose.Schema({
         type: String,
         require: true,
         trim: true,
-        enum: ["Pending", "Completed"]
+        enum: ["Pending", "Completed"],
+        default:"Pending"
     },
     priority: {
         type: String,
         require: true,
         trim: true,
-        enum: ["less", "medium", "high"]
+        enum: ["less", "medium", "high"],
+        default:"high"
     },
     deadline: {
         type: String,
@@ -54,5 +55,5 @@ const todo = new mongoose.Schema({
     }
 })
 
-const Todo = mongoose.model("Todo", todo);
-export default Todo;
+export const Todos = mongoose.model("Todos", todo);
+// export default Todos;

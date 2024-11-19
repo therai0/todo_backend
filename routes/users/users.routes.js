@@ -20,7 +20,7 @@ import dataverificaton from "../../middleware/datas/datavarification.middleware.
 
 
 // register route with dataverification middleware
-Route.route("/register").post(dataverificaton,registerUser);
+Route.route("/create").post(dataverificaton,registerUser);
 Route.route("/user/:id").get(getUserById);
 Route.route("/update/:id").post(updateUserDataById);
 Route.route("/delete/:id").post(deleteUserById);
