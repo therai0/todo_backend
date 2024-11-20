@@ -10,7 +10,7 @@ import { generatePassword, isCorrectPassword } from "../../utils/password/passwo
 // creating account
 const registerUser = async (req, res) => {
     try {
-        // console.log(req.body);
+        console.log(req.body);
         const { firstname, lastname, username, email, password, clientapp, isChecked } = req.body;
 
         // creating new user
@@ -21,19 +21,20 @@ const registerUser = async (req, res) => {
                 // generating token
                 const token = generateToken({ firstname, lastname, username, email, clientapp, _id });
 
-                // response token in cookies
-                res.cookie('accessToken', token, {
-                    httpOnly: true,
-                    maxAge: 86400
-                });
+                // // response token in cookies
+                // res.cookie('accessToken', token, {
+                //     httpOnly: true,
+                //     maxAge: 86400
+                // });
 
                 return res.status(201).json({
+                    token:token,
                     body: {
-                        username: username,
-                        firstname: firstname,
-                        lastname: lastname,
-                        email: email,
-                        id: _id
+                        id: _id,
+                        firstname:firstname,
+                        lastname:lastname,
+                        username:username,
+                        email:email,
                     }, message: "User account created successfully"
                 });
             })
@@ -62,10 +63,6 @@ const getUserById = async (req, res) => {
                     const { firstname, lastname, username, email, _id } = data;
                     return res.status(200).json({
                         body: {
-                            firstname: firstname,
-                            lastname: lastname,
-                            username: username,
-                            email: email,
                             id: _id
                         }
                     })
@@ -206,19 +203,20 @@ const loginUser = async (req, res) => {
                     const token = generateToken({ firstname, lastname, username, email, clientapp, _id });
 
                     // response token in cookies
-                    res.cookie('accessToken', token, {
-                        httpOnly: true,
-                        maxAge: 86400
-                    });
+                    // res.cookie('accessToken', token, {
+                    //     httpOnly: true,
+                    //     maxAge: 86400
+                    // });
 
                     return res.status(201).json({
-                        body: {
-                            username: username,
-                            firstname: firstname,
-                            lastname: lastname,
-                            email: email,
-                            id: _id
-                        }, message: "Login successfully"
+                        token:token,
+                    body: {
+                        id: _id,
+                        firstname:firstname,
+                        lastname:lastname,
+                        username:username,
+                        email:email,
+                    }, message: "Login successfully"
                     });
                 } else {
                     return res.status(401).json({ message: "Incorrect password" });
